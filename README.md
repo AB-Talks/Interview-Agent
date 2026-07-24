@@ -83,6 +83,69 @@ Final Report
 - ⬜ Career Coach
 - ⬜ Salary Negotiator
 
+## How to Distribute & Use in Other Projects
+
+Since these agents are built to be modular, you might want to integrate them into another application (like the AB Talks main platform). Here are the recommended ways to do so:
+
+### Option 1: Install from GitHub (Recommended)
+
+If the agents are structured as Python packages, the easiest way to integrate them is by installing directly from GitHub.
+
+```bash
+# Example for installing a specific agent repository
+pip install git+https://github.com/AB-Talks/Interview-Agent.git
+```
+
+In your application code, you can then import the agent directly:
+
+```python
+from interview_agent import InterviewAgent
+
+agent = InterviewAgent()
+```
+*Note: If the agent doesn't expose a clean public API (like `InterviewAgent` class) yet, we are working on designing a standardized entry point for each package.*
+
+### Option 2: Git Submodule
+
+You can add this repository as a submodule to your main project.
+
+```text
+Your-App/
+├── backend/
+├── frontend/
+└── agents/
+    └── Interview-Agent/
+```
+
+- **Pros:** Always pulls the latest changes; single source of truth.
+- **Cons:** Git submodules can be tricky to manage.
+
+### Option 3: Private PyPI (Best Long-Term)
+
+Eventually, we plan to publish these agents as proper packages (e.g., `abtalks-interview-agent`). Once published, you can simply run:
+
+```bash
+pip install abtalks-interview-agent
+```
+
+---
+
+## How to Test Without Installing & Demos
+
+You don't need to install the project as a package just to try it out. You can run the scripts directly from the cloned repository.
+
+### Running a Demo
+
+To see a proper working demo of the agent, you can run the main agent script directly. For example, to test the Interview Agent:
+
+```bash
+python "Interview Agent"/interview_agent.py
+```
+
+This script will run the agent in your terminal, allowing you to interact with it and see its capabilities without any complex setup. 
+
+Additionally, you can explore the `playground/` directory which contains interactive UI demos (like `index.html`) to visualize how these agents can be integrated into web applications.
+
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details. In short:
 1. Fork the repo
